@@ -173,7 +173,7 @@ def formatosCrud():
             if op==1:
                 crearFormato()
             elif op==2:
-                pass
+                listarFormatos()
             elif op==3:
                 print("Volviendo al menu principal...")
                 os.system('pause')
@@ -199,6 +199,14 @@ def crearFormato():
     except ValueError:
         print("Ingrese una opcion valida...")
         os.system('pause')
+
+
+def listarFormatos():
+    print("  CODIGO  |  " + "   |   ".join(listasimple["Formatos"][0].keys()))
+    for index, diccionario in enumerate(listasimple["Formatos"]):
+        print(f"   {index+1}      |   " + "  |  ".join(str(valor)
+              for valor in diccionario.values()))
+    os.system('pause')
 
 
 def peliculasCrud():
