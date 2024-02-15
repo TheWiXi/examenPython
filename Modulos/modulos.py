@@ -226,7 +226,7 @@ def peliculasCrud():
         try:
             op=int(input("Ingres una opcion: _"))
             if op ==1:
-                pass
+                crearPelicula()
             elif op ==2:
                 pass
             elif op ==3:
@@ -247,6 +247,42 @@ def peliculasCrud():
         except ValueError:
             print("Ingrese una opcion valida...")
             os.system('pause')
+
+
+def crearPelicula():
+    try:
+        nombre=str(input("Ingrese el nombre de la pelicula:_ ")).capitalize()
+        listarGeneros()
+        op=int(input("Ingrese el codigo del genero:_ "))
+        genero=[]
+        actores=[]
+        for i, value in enumerate(listasimple["Generos"]):
+            if (op-1)==i:
+                genero.append(value)
+        sinopsis=str(input("Ingrese la sinopsis:_ "))
+        duracion=int(input("Ingrese la duracion de la pelicula(En minutos):_ "))
+        numActores=int(input("Ingrese el numero de actores a agregar:_ "))
+        listarActores()
+        for i in range(numActores):
+            op=int(input("Ingrese el codigo del actor:_ "))
+            for i, value in enumerate(listasimple["Actores"]):
+                if (op-1)==i:
+                    actores.append(value)
+
+        pelicula={
+            "ID":"P"+str(len(listasimple["Peliculas"])+1),
+            "Nombre":nombre,
+            "Genero":genero,
+            "Sinopsis":sinopsis,
+            "Duracion":duracion,
+            "ActoresPrincipales":actores
+        }
+        listasimple["Peliculas"].append(pelicula)
+        print("Pelicula creada con exito !")
+        data.dataUpload(info)   
+    except ValueError:
+        print("Ingrese una opcion valida...")
+        os.system('pause')
 
 
 def informes():
