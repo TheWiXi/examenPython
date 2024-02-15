@@ -1,0 +1,39 @@
+[
+    {
+        "Peliculas": [
+            {
+                "Codigo": "",
+                "Nombre": "",
+                "Genero": [],
+                "Sinopsis": "",
+                "Duracion": "",
+                "ActoresPrincipales": []
+            }
+        ],
+        "Generos": [
+            {
+                "ID": "G1",
+                "Nombre": "Accion"
+            },
+            {
+                "ID": "G2",
+                "Nombre": "Drama"
+            }
+        ],
+        "Actores": [
+            {
+                "ID": "A1",
+                "Nombre": "Silvester stallone",
+                "Rol": "Protagonista"
+            }
+        ],
+        "Formato": [
+            {
+                "ID": "",
+                "Nombre": "",
+                "NroCopias": "",
+                "ValorPrestamo": 5000
+            }
+        ]
+    }
+]
