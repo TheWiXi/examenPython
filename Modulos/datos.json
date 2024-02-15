@@ -3,15 +3,13 @@
         "Peliculas": [
             {
                 "ID": "P1",
-                "Nombre": "Terminator II",
-                "Genero": [
-                    {
-                        "ID": "G1",
-                        "Nombre": "Accion"
-                    }
-                ],
+                "Nombre": "Terminator 1",
+                "Genero": {
+                    "ID": "G1",
+                    "Nombre": "Accion"
+                },
                 "Sinopsis": "Robots quieren destruir la tierra",
-                "Duracion": 95,
+                "Duracion": 98,
                 "ActoresPrincipales": [
                     {
                         "ID": "A1",

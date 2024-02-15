@@ -229,7 +229,7 @@ def peliculasCrud():
             elif op ==2:
                 editarPelicula()
             elif op ==3:
-                pass
+                eliminarPelicula()
             elif op ==4:
                 pass
             elif op ==5:
@@ -337,6 +337,19 @@ def editarPelicula():
         print("Ingrese una opcion valida...")
         os.system('pause')
                 
+
+def eliminarPelicula():
+    try:
+        listarPeliculas()
+        op=int(input("Ingrese el codigo de la pelicula a eliminar:_ "))
+        for i, key in enumerate(listasimple["Peliculas"]):
+            if i==(op-1):
+                listasimple["Peliculas"].remove(listasimple["Peliculas"][op-1])
+        data.dataUpload(info)
+    except ValueError:
+            print("Ingrese una opcion valida...")
+            os.system('pause')
+
 
 def listarPeliculas():
     print("  CODIGO  |  " + "   |   ".join(listasimple["Peliculas"][0].keys()))
