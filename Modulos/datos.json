@@ -3,7 +3,7 @@
         "Peliculas": [
             {
                 "ID": "P1",
-                "Nombre": "Terminator i",
+                "Nombre": "Terminator II",
                 "Genero": [
                     {
                         "ID": "G1",

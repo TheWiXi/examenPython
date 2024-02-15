@@ -217,10 +217,9 @@ def peliculasCrud():
             1.Agregar pelicula.
             2.Editar pelicula.
             3.Eliminar pelicula.
-            4.Eliminar Actor.
-            5.Buscar pelicula.
-            6.Listar todas las peliculas.
-            7.Volver al menu principal.
+            4.Buscar pelicula.
+            5.Listar todas las peliculas.
+            6.Volver al menu principal.
         
         """)
         try:
@@ -228,16 +227,14 @@ def peliculasCrud():
             if op ==1:
                 crearPelicula()
             elif op ==2:
-                pass
+                editarPelicula()
             elif op ==3:
                 pass
             elif op ==4:
                 pass
             elif op ==5:
-                pass
-            elif op ==6:
-                pass
-            elif op==7:
+                listarPeliculas()
+            elif op==6:
                 print("Volviendo al menu principal...")
                 os.system('pause')
                 break
@@ -254,11 +251,10 @@ def crearPelicula():
         nombre=str(input("Ingrese el nombre de la pelicula:_ ")).capitalize()
         listarGeneros()
         op=int(input("Ingrese el codigo del genero:_ "))
-        genero=[]
         actores=[]
         for i, value in enumerate(listasimple["Generos"]):
             if (op-1)==i:
-                genero.append(value)
+                genero=value
         sinopsis=str(input("Ingrese la sinopsis:_ "))
         duracion=int(input("Ingrese la duracion de la pelicula(En minutos):_ "))
         numActores=int(input("Ingrese el numero de actores a agregar:_ "))
@@ -283,6 +279,70 @@ def crearPelicula():
     except ValueError:
         print("Ingrese una opcion valida...")
         os.system('pause')
+
+
+def editarPelicula():
+    try:
+        listarPeliculas()
+        op=int(input("Ingresse el codigo de la pelicula:_ "))
+        for i,value in enumerate(listasimple["Peliculas"]):
+            if (op-1)==i:
+                print("""
+                Opciones a editar:
+                    1.Nombre.
+                    2.Genero.
+                    3.Sinopsis.
+                    4.Duracion.
+                    5.Actores.
+                    6.Cancelar
+                """)
+                opc=int(input("Ingrese la opcion a editar:_ "))
+                if opc==1:
+                    listasimple["Peliculas"][i]["Nombre"]=str(input("Ingrese el nombre:_ "))
+                    data.dataUpload(info) 
+                elif opc==2:
+                    listarGeneros()
+                    opgen=int(input("Ingrese el codigo del genero:_ "))
+                    genero=[]
+                    for i, value in enumerate(listasimple["Generos"]):
+                        if (opgen-1)==i:
+                            genero.append(value)
+                    listasimple["Peliculas"][i]["Genero"]=genero
+                    data.dataUpload(info) 
+                elif opc==3:
+                    listasimple["Peliculas"][i]["Sinopsis"]=str(input("Ingrese la Sinopsis:_ "))
+                    data.dataUpload(info) 
+                elif opc==4:
+                    listasimple["Peliculas"][i]["Duracion"]=int(input("Ingrese la duracio(en minutos):_ "))
+                    data.dataUpload(info) 
+                elif opc==5:
+                    actores=[]
+                    numActores=int(input("Ingrese el numero de actores a agregar:_ "))
+                    listarActores()
+                    for i in range(numActores):
+                        op=int(input("Ingrese el codigo del actor:_ "))
+                        for i, value in enumerate(listasimple["Actores"]):
+                            if (op-1)==i:
+                                actores.append(value)
+                    listasimple["Peliculas"][i]["Actores"]=actores
+                    data.dataUpload(info) 
+                elif opc==6:
+                    print("Volviendo al menu principal...")
+                    os.system('pause')
+                    break
+                else:
+                    print("Ingrese una opcion valida...")
+                    os.system('pause')
+    except ValueError:
+        print("Ingrese una opcion valida...")
+        os.system('pause')
+                
+
+def listarPeliculas():
+    print("  CODIGO  |  " + "   |   ".join(listasimple["Peliculas"][0].keys()))
+    for index, diccionario in enumerate(listasimple["Peliculas"]):
+        print(f"   {index+1}      |   " + "  |  ".join(str(valor)for valor in diccionario.values()))
+    os.system('pause')
 
 
 def informes():
