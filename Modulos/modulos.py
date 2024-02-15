@@ -72,10 +72,9 @@ def generosCrud():
 
 def crearGenero():
     try:
-        nombre=str(input("Ingrese el nombre del genero: _")).capitalize().replace(" ","")
         genero={
-        "ID":"G"+str(len(listasimple["Generos"])+1),
-            "Nombre":nombre
+            "ID":"G"+str(len(listasimple["Generos"])+1),
+            "Nombre":str(input("Ingrese el nombre del genero: _")).capitalize().replace(" ","")
         }
         listasimple["Generos"].append(genero)
         print("Genero creado con exito !")
@@ -108,7 +107,7 @@ def actoresCrud():
             if op ==1:
                 crearActor()
             elif op==2:
-                pass
+                listarActores()
             elif op==3:
                 print("Volviendo al menu principal...")
                 os.system('pause')
@@ -151,6 +150,14 @@ def crearActor():
         os.system('pause')
 
 
+def listarActores():
+    print("  CODIGO  |  " + "   |   ".join(listasimple["Actores"][0].keys()))
+    for index, diccionario in enumerate(listasimple["Actores"]):
+        print(f"   {index+1}      |   " + "  |  ".join(str(valor)
+              for valor in diccionario.values()))
+    os.system('pause')
+
+
 def formatosCrud():
     while True:
         os.system('cls')
@@ -164,7 +171,7 @@ def formatosCrud():
         try:
             op=int(input("Ingres una opcion: _"))
             if op==1:
-                pass
+                crearFormato()
             elif op==2:
                 pass
             elif op==3:
@@ -177,6 +184,21 @@ def formatosCrud():
         except ValueError:
             print("Ingrese una opcion valida...")
             os.system('pause')
+
+
+def crearFormato():
+    try:
+        formato={
+            "ID":"F"+str(len(listasimple["Formatos"])+1),
+            "Nombre":str(input("Ingrese el nombre del Formato: _")).capitalize(),
+            "ValorPrestamo":int(input("Ingrese sin puntos ni comas el valor de prestamo:_ "))
+        }
+        listasimple["Formatos"].append(formato)
+        print("Formato creado con exito !")
+        data.dataUpload(info)   
+    except ValueError:
+        print("Ingrese una opcion valida...")
+        os.system('pause')
 
 
 def peliculasCrud():

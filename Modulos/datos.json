@@ -27,11 +27,10 @@
                 "Rol": "Protagonista"
             }
         ],
-        "Formato": [
+        "Formatos": [
             {
-                "ID": "",
-                "Nombre": "",
-                "NroCopias": "",
+                "ID": "F1",
+                "Nombre": "Dvd",
                 "ValorPrestamo": 5000
             }
         ]
