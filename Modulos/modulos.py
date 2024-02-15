@@ -231,7 +231,7 @@ def peliculasCrud():
             elif op ==3:
                 eliminarPelicula()
             elif op ==4:
-                pass
+                listarPeliculasEsp()
             elif op ==5:
                 listarPeliculas()
             elif op==6:
@@ -363,7 +363,7 @@ def informes():
         os.system('cls')
         print("""Menu Principal BlockBuster:
             1.Listar las peliculas de un genero.
-            2.Listar peliculas donde el protagonista sea Silvester Stallone.
+            2.Listar peliculas por Actor.
             3.Buscar pelicula y mostrar sinopsis y actores.
             4.Volver al menu principal.
         
@@ -371,9 +371,9 @@ def informes():
         try:
             op=int(input("Ingres una opcion: _"))
             if op ==1:
-                pass
+                peliculasGenero()
             elif op ==2:
-                pass
+                peliculasActor()
             elif op ==3:
                 pass
             elif op==4:
@@ -386,3 +386,48 @@ def informes():
         except ValueError:
             print("Ingrese una opcion valida...")
             os.system('pause')
+
+
+def peliculasGenero():
+    try:
+        listarGeneros()
+        gen=int(input("Ingrese el codigo del genero:_ "))
+        print("  CODIGO  |  " + "   |   ".join(listasimple["Peliculas"][0].keys()))
+        for i,value in enumerate(listasimple["Generos"]):
+            if (gen-1)==i:
+                genero=value
+                for index,valor in enumerate(listasimple["Peliculas"]):
+                    genpel=listasimple["Peliculas"][index]["Genero"]
+                    if genero==genpel:
+                        for index, diccionario in enumerate(listasimple["Peliculas"]):
+                            print(f"   {index+1}      |   " + "  |  ".join(str(valor)
+                                for valor in diccionario.values()))
+                        os.system('pause')
+    except ValueError:
+        print("Ingrese una opcion valida...")
+        os.system('pause')
+
+
+def peliculasActor():
+    try:
+        listarActores()
+        gen=int(input("Ingrese el codigo del actor:_ "))
+        print("  CODIGO  |  " + "   |   ".join(listasimple["Peliculas"][0].keys()))
+        for i,value in enumerate(listasimple["Actores"]):
+            if (gen-1)==i:
+                actor=value
+                for index,valor in enumerate(listasimple["Peliculas"]):
+                    actpel=listasimple["Peliculas"][index]["ActoresPrincipales"]
+                    if actor in actpel:
+                        for index, diccionario in enumerate(listasimple["Peliculas"]):
+                            print(f"   {index+1}      |   " + "  |  ".join(str(valor)
+                                for valor in diccionario.values()))
+                        os.system('pause')
+    except ValueError:
+        print("Ingrese una opcion valida...")
+        os.system('pause')
+
+    
+def listarPeliculasEsp():
+    print("No se alcanzo a finalizar :(")
+    os.system('pause')
